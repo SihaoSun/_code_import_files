@@ -48,6 +48,10 @@ OB.act_obs2 = data(:,28);
 OB.act_obs3 = data(:,29);
 OB.act_obs4 = data(:,30);
 
+OB.p = data(:,31);
+OB.q = data(:,32);
+OB.r = data(:,33);
+
 OB.phi = data(:,34);
 OB.theta = data(:,35);
 OB.psi = data(:,36);

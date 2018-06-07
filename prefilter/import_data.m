@@ -1,7 +1,7 @@
 function [OB_a,OT_a,WIND,PARA,take,DU] = import_data(index, alignment, add_wind, prefilter, save_data, read_data,align_method,ExtraAlign)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Function for importing optitrack, onborad and windspeed data
-%  and conducting alignment. Retrieving file 'optitrack_onboard_data_index.xlsx'
+%  and conducting alignment. Directory file 'optitrack_onboard_data_index.xlsx'
 %  and folder '\func_common' should be added to the path.
 %
 %   outputs:
@@ -12,7 +12,7 @@ function [OB_a,OT_a,WIND,PARA,take,DU] = import_data(index, alignment, add_wind,
 %   @WIND: structure containing wind speed information.
 %   @PARA: structure containing drone structural and inertia information.
 %   @take: structure in consideration of compatibility with older codes.
-%   @DU:   index of used data imported from the retrival file.
+%   @DU:   index of used data imported from the directory.
 %
 %   inputs:
 %   @index:     index of the row which contains the file to import.
@@ -131,11 +131,10 @@ if alignment == 1
 
     switch configuration
         case 'nominal'
-%             method = 'theta_ot';
-            method = align_method;
+            method = 'theta_ot';
+%             method = align_method;
         otherwise
-%             method = 'phi_ot';
-            method = align_method;
+            method = 'phi_ot';
     end
     [OT_a,OB_a,Delay] = align_signals(OT,OB,method);
 
