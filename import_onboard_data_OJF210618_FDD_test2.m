@@ -1,4 +1,4 @@
-function OB = import_onboard_data_OJF080518_New_Guidance5(name)
+function OB = import_onboard_data_SMC_test_data3(name)
 
 OB = struct;
 
@@ -107,5 +107,15 @@ OB.x_ref = data(:,77);
 OB.y_ref = data(:,78);
 OB.x = data(:,79);
 OB.y = data(:,80);
+
+OB.k_pos= data(:,83);
+OB.k_vel = data(:,84);
+OB.k_pos_int = data(:,85);
+OB.k_att = data(:,86);
+OB.wc_acc = data(:,87);
+OB.k_z = data(:,88);
+OB.k_z_int = data(:,89);
+OB.k_p = data(:,90);
+OB.k_q = data(:,91);
 
 end

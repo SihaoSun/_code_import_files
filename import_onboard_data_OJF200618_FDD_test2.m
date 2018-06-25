@@ -1,4 +1,4 @@
-function OB = import_onboard_data_OJF080518_New_Guidance5(name)
+function OB = import_onboard_data_SMC_test_data3(name)
 
 OB = struct;
 
@@ -108,4 +108,5 @@ OB.y_ref = data(:,78);
 OB.x = data(:,79);
 OB.y = data(:,80);
 
+OB.forward_switch= data(:,83);
 end

@@ -154,7 +154,7 @@ end
 % pause(1/5)
 end
 
-% Script to check shifted signal vs other state in the same dataset
+% Script to check shifted signal vs othe r state in the same dataset
 if (VERIFICATION == 1)
 VERIFICATION_script;
 end
