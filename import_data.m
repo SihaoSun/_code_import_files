@@ -58,9 +58,6 @@ end
 end
 end        
 
-
-addpath('E:\Data\_code_import_files\func_common'); % path of func_comon which contains candidate import functions
-
 [~,~,file] = xlsread([logger_file ,'.xlsx']);
 
 label       = file(1,:);
@@ -106,7 +103,6 @@ else
 OT_import_function = str2func(OT_function);
 OB_import_function = str2func(OB_function);
 
-addpath(genpath('E:\Data\_code_import_files'));
 
 if ~isnan(OT_name)
     addpath(OT_path);    
@@ -243,7 +239,6 @@ end
 end
 %% import drone geometry parameters
 PARA.mass = mass;
-addpath('E:\Data\_data_drone_parameters');
 switch type
     case 'Bebop'
         load('TUBB20_bare_parameters.mat');
@@ -252,7 +247,6 @@ switch type
 %         load('TUBB20_parameters.mat');
     otherwise
 end
-rmpath('E:\Data\_data_drone_parameters');
 
 PARA.Iv = parameters.Iv;
 PARA.b  = parameters.b;
