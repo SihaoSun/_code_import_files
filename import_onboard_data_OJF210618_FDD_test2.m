@@ -1,4 +1,4 @@
-function OB = import_onboard_data_SMC_test_data3(name)
+function OB = import_onboard_data_OJF210618_FDD_test2(name)
 
 OB = struct;
 

@@ -25,6 +25,10 @@ Nbodies=length(body_names);
 
 openedFile = fopen(['Take ',name '.csv'],'r');
 
+if openedFile == -1 %some files are stored with 'Take' prefix
+    openedFile = fopen([name '.csv'],'r');
+end
+
 % read the first 7 lines and save individiual cells delimited by comma
 for i=1:7
     line=fgetl(openedFile);
@@ -46,7 +50,11 @@ end
 index=1:length(lines(4).string);
 
 % load the rest of the data
-data.CSVdata=csvread(['Take ' name '.csv'],7,0);
+try
+    data.CSVdata=csvread(['Take ' name '.csv'],7,0);
+catch ME
+    data.CSVdata=csvread([name '.csv'],7,0);  
+end
 data.frames=data.CSVdata(:,1);
 data.time=data.CSVdata(:,2);
 

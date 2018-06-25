@@ -85,7 +85,6 @@ DU = DU1:DU2;
 if strcmp(OT_name(1:4),'Take');
     OT_name = OT_name(6:end);
 end
-
 take.name = OT_name;
 take.path = OT_path;
 take.type = type;
@@ -94,9 +93,6 @@ take.windspeed = wind;
 
 if isnan(WIND_path)
     WIND_path = OT_path;
-end
-if isnan(wind)
-    wind = 0;
 end
 %% read mat file if read_data is true
 if read_data == 1
@@ -137,37 +133,26 @@ else
     addpath(WIND_path);
     if wind == 'C'
         T_wind = table2array(readtable(['windspeed ' OT_name '.txt'],'Delimiter','\t'));
-    else 
-        try
-            T_wind = table2array(readtable([wind '.txt'],'Delimiter','\t'));
-        catch ME
-            T_wind = table2array(readtable([wind '.csv'],'Delimiter','\t'));   
-        end
+    else
+        T_wind = table2array(readtable([wind '.txt'],'Delimiter','\t'));
     end
     time_wind = T_wind(:,1);
     speed_wind = T_wind(:,5);
     time_wind(time_wind==0) = []; speed_wind(speed_wind==0) = [];
 
     take_year = str2double(OT_name(1:4));
-    take_month = str2double(OT_name(6:7));
+    take_month = str2double(OT_name(6:7
     take_date = str2double(OT_name(9:10));
     take_hour = str2double(OT_name(12:13));
     take_minute = str2double(OT_name(15:16));
     take_sec = str2double(OT_name(18:19));
     take_AMPM = OT_name(21:22);
-    if strcmp(take_AMPM,'PM')
+    if take_AMPM == 'PM'
         take_hour = take_hour + 12;
     end
-    % take_time is the Optitrack starting time with respect to 2017-11-08 13.00.00 PM
-    if take_year == 2017 && take_month == 11
-        take_time = (take_date - 8)*3600*24 + (take_hour - 13)*3600 + take_minute*60 + take_sec;
-    elseif take_year == 2018 && take_month == 5
-        take_time = (take_date - 8)*3600*24 + (take_hour - 13)*3600 + take_minute*60 + take_sec + 15634800;
-    elseif take_year == 2018 && take_month == 6 && take_hour > 3 && strcmp(take_AMPM,'PM')
-        take_time = (take_date - 8)*3600*24 + (take_hour - 13)*3600 + take_minute*60 + take_sec + 18313200;
-    else
-        error('Failed to synchronize the wind logger file time stamp!');
-    end
+    % relevate time to 2017-11-08 13.00.00 PM
+    take_time = (take_date - 8)*3600*24 + (take_hour - 13)*3600 + take_minute*60 + take_sec; 
+18,403,200
     WIND.speed = speed_wind;
     WIND.TIME = time_wind-take_time; %align with OT
     rmpath(WIND_path);
