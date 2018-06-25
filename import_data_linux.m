@@ -1,4 +1,3 @@
-
 function [OB_a,OT_a,WIND,PARA,take,DU] = import_data(index, alignment, add_wind, prefilter, save_data, read_data,align_method,ExtraAlign)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Function for importing optitrack, onborad and windspeed data
@@ -34,9 +33,9 @@ function [OB_a,OT_a,WIND,PARA,take,DU] = import_data(index, alignment, add_wind,
 %   12.12.2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-addpath('E:\Data\_code_import_files\func_common');
+%addpath('E:\Data\_code_import_files\func_common');
 
-[~,~,file] = xlsread('E:\Data\optitrack_onboard_data_index.xlsx');
+[~,~,file] = xlsread('optitrack_onboard_data_index.xlsx');
 
 label       = file(1,:);
 
