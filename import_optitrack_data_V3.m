@@ -349,6 +349,7 @@ for n=1:Nbodies
     OT.XG          = posCO_G(:,1);
     OT.YG          = posCO_G(:,2);
     OT.ZG          = posCO_G(:,3);
+    OT.posCO_E     = posCO_E;
     % Attitude in B-frame: roll_E2B, pitch_E2B, yaw_E2B; (calc)
     OT.PHI         = roll_E2B;
     OT.THETA       = pitch_E2B;
